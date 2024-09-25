@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 var count = 0.obs;
-
+var steps = 1.obs;
 
 class HomeScreen extends StatelessWidget{
   const HomeScreen({super.key});
@@ -17,17 +17,37 @@ class HomeScreen extends StatelessWidget{
         children: [
           Text("Count ${count.value}"),
           const SizedBox(height: 10,),
-          ElevatedButton(
-            onPressed: (){
-              count.value = count.value +1;
-            }, 
-            child: const Text("Increase")),
-             ElevatedButton(
-            onPressed: (){
-              count.value--;
-            }, 
-            child: const Text("Decrease")),
-            
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: (){
+                  count.value = count.value - steps.value;
+                }, 
+                child: const Text("Decrease")),
+                ElevatedButton(
+                onPressed: (){
+                  count.value = steps.value + count.value;
+                }, 
+                child: const Text("Increase")),
+            ],
+          ),
+              Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: (){
+                  steps.value--;
+                }, 
+                child: const Text("Decrease Step")),
+                ElevatedButton(
+                onPressed: (){
+                  steps.value++;
+                }, 
+                child: const Text("Increase Step")),
+            ],
+          ),
+          Text("Steps ${steps.value}")
         ],
       ),
     ),
