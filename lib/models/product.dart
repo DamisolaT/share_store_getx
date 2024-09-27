@@ -25,11 +25,11 @@ class ProductModel{
   data) => ProductModel(
     id: data['id'], 
     title: data['title'], 
-    price: data['price'], 
+    price: double.parse(data['price'].toString()), 
     description: data['description'], 
     category: data['category'], 
     image: data['image'],
-    rating: data['rating'] ['rate'],
+    rating: double.parse(data['rating'] ['rate'].toString()),
     reviewCount: data ['rating']['count']
     );
 
